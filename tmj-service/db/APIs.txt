@@ -1,0 +1,155 @@
+*******Users API************
+Ticket system users
+
+GET
+/tmj/api/v1/users:
+return all users
+
+/tmj/api/v1/users/:id
+return user with the specified id
+
+
+POST
+(Admin Only API)
+/tmj/api/v1/users
+create a new user
+required parameters:
+`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+ username` varchar(20) NOT NULL,
+ password` varchar(32) NOT NULL,
+ 'First name` varchar(30) NOT NULL,
+ 'Last name` varchar(30) NOT NULL,
+  `Email` varchar(150) NOT NULL,
+  `image` varchar(255) DEFAULT NULL COMMENT 'profile picture',
+  `registered` int(10) unsigned NOT NULL,
+  `last_login` int(10) unsigned NOT NULL,
+  `last_active` int(10) unsigned NOT NULL,
+  `center` varchar(255) NOT NULL COMMENT 'id of center that can work on',
+  `email_notif` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Receive email when have notification',
+  `roles` varchar(255) NOT NULL,
+
+returns the newly created user
+
+
+PUT
+/tmj/api/v1/users/:id
+update the user with the corresponding id
+accepts parameters:
+ username` varchar(20) NOT NULL,
+ password` varchar(32) NOT NULL,
+ 'First name` varchar(30) NOT NULL,
+ 'Last name` varchar(30) NOT NULL,
+  `Email` varchar(150) NOT NULL,
+  `image` varchar(255) DEFAULT NULL COMMENT 'profile picture',
+  `registered` int(10) unsigned NOT NULL,
+  `last_login` int(10) unsigned NOT NULL,
+  `last_active` int(10) unsigned NOT NULL,
+  `center` varchar(255) NOT NULL COMMENT 'id of center that can work on',
+  `email_notif` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Receive email when have notification',
+  `roles` varchar(255) NOT NULL,
+
+
+DELETE
+/tmj/api/v1/users/:id
+destroys the user with the specified id
+returns an error if present
+
+
+**************Ticket*************:
+
+GET
+/tmj/api/v1/tickets:
+return all tickets
+
+
+/tmj/api/v1/tickets/:id
+return tickets with the specified id
+
+/tmj/api/v1/tickets/user/
+return tickets with the specified id
+
+POST
+/tmj/api/v1/tickets
+create a new tickets
+required parameters:
+ `ticket_id` int(10) unsigned NOT NULL,
+  `center` tinyint(3) unsigned NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  `description` longtext NOT NULL,
+  'name' varchar(20) NOT NULL,
+  'address'  varchar(4000) NOT NULL,
+  'country' varchar(30) NOT NULL,
+  'state' varchar(30) NOT NULL,
+   'district' varchar(30) NOT NULL,
+   'zone' varchar(30) NOT NULL,
+  `status` tinyint(4) unsigned NOT NULL,
+  `priority` tinyint(4) unsigned NOT NULL,
+  `assignee` tinyint(4) unsigned NOT NULL,
+  `reviewed` tinyint(4) unsigned NOT NULL,
+  `approved` tinyint(4) unsigned NOT NULL,
+  `addedby` tinyint(4) NOT NULL,
+  `duedate` int(12) unsigned NOT NULL,
+  `estimated_seconds` int(10) unsigned NOT NULL COMMENT 'estimated time in seconds',
+
+returns the newly created ticket
+
+PUT
+/tmj/api/v1/tickets/:id
+update the tickets with the corresponding id
+accepts parameters:
+ `ticket_id` int(10) unsigned NOT NULL,
+  `center` tinyint(3) unsigned NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  `description` longtext NOT NULL,
+  'name' varchar(20) NOT NULL,
+  'address'  varchar(4000) NOT NULL,
+  'country' varchar(30) NOT NULL,
+  'state' varchar(30) NOT NULL,
+  'district' varchar(30) NOT NULL,
+  'zone' varchar(30) NOT NULL,
+  `status` tinyint(4) unsigned NOT NULL,
+  `priority` tinyint(4) unsigned NOT NULL,
+  `assignee` tinyint(4) unsigned NOT NULL,
+  `reviewed` tinyint(4) unsigned NOT NULL,
+  `approved` tinyint(4) unsigned NOT NULL,
+  `addedby` tinyint(4) NOT NULL,
+  `duedate` int(12) unsigned NOT NULL,
+  `estimated_seconds` int(10) unsigned NOT NULL COMMENT 'estimated time in seconds',
+ 
+
+DELETE
+/tmj/api/v1/tickets/:id
+destroys the tickets with the specified id
+returns an error if present
+
+Center:
+
+GET
+/tmj/api/v1/center:
+return all centers
+
+
+/tmj/api/v1/centers/:id
+return tickets with the specified id
+
+POST
+/tmj/api/v1/centers
+create a new centers
+required parameters:
+
+returns the newly created center
+
+PUT
+/tmj/api/v1/centers/:id
+update the centers with the corresponding id 
+accepts parameters:
+
+
+DELETE
+/tmj/api/v1/centers/:id
+destroys the centers with the specified id
+returns an error if present
+
+
